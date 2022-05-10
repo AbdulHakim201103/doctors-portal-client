@@ -2,6 +2,10 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {},
+    backgroundImage: {
+      "hero-lg": "url('/src/assets/images/bg.png')",
+      "hero-sm": "url('/src/assets/images/bg.png')",
+    },
   },
   daisyui: {
     themes: [
