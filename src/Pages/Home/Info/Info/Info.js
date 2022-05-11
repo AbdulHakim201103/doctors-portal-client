@@ -15,7 +15,7 @@ const Info = () => {
       ></InfoCard>
       <InfoCard
         bgClass="bg-accent"
-        cardBody="Saltha,Faridpu"
+        cardBody="Saltha,Faridpur"
         cardTitle="Visit our location"
         img={marker}
       ></InfoCard>
