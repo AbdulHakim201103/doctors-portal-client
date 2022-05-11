@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import footer from "../../../assets/images/footer.png";
 
 const Footer = () => {
+  const today = new Date();
+  const year = today.getFullYear();
   return (
     <div>
       <footer
@@ -47,9 +49,9 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="my-10 text-center">
-          <p className="font-bold">
-            Copyeright &copy; 2022 - All right reserved by Doctor Portal Ltd
+        <div className="mb-5 mt-10 text-center">
+          <p >
+            Copyright &copy; {year} - All right reserved
           </p>
         </div>
       </footer>
