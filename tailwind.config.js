@@ -1,11 +1,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
-    backgroundImage: {
-      "hero-lg": "url('/src/assets/images/bg.png')",
-      "hero-sm": "url('/src/assets/images/bg.png')",
+    extend: {
+      backgroundImage: {
+        "hero-lg": "url('/src/assets/images/bg.png')",
+        "hero-sm": "url('/src/assets/images/bg.png')",
+      },
     },
+    
   },
   daisyui: {
     themes: [
@@ -18,8 +20,7 @@ module.exports = {
           "base-100": "#ffffff",
         },
       },
-      "dark",
-      "cupcake",
+      
     ],
   },
   plugins: [require("daisyui")],

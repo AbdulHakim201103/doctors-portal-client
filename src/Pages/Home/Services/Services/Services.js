@@ -9,20 +9,23 @@ const Services = () => {
     {
       _id: 1,
       name: "Fluoride Treatment",
-      description:"Fluoride treatments are typically professional treatments containing a high concentration of fluoride that a dentist or hygienist will apply to a person's teeth to improve health and reduce the risk of cavities. ",
-      img: fluoride
+      description:
+        "Fluoride treatments are typically professional treatments containing a high concentration of fluoride that a dentist or hygienist will apply to a person's teeth to improve health and reduce the risk of cavities. ",
+      img: fluoride,
     },
     {
       _id: 2,
       name: "Cavity Filling",
-      description:"Amalgam has been used by dental professionals for more than a century; it is the most researched material used for filling cavities.",
-      img: cavity
+      description:
+        "Amalgam has been used by dental professionals htmlFor more than a century; it is the most researched material used htmlFor filling cavities.",
+      img: cavity,
     },
     {
       _id: 3,
       name: "Teeth Whitening",
-      description:"Teeth whitening involves bleaching your teeth to make them lighter. It can't make your teeth brilliant white, but it can lighten the existing colour by several shades.",
-      img: whitening
+      description:
+        "Teeth whitening involves bleaching your teeth to make them lighter. It can't make your teeth brilliant white, but it can lighten the existing colour by several shades.",
+      img: whitening,
     },
   ];
   return (
@@ -33,12 +36,9 @@ const Services = () => {
       </div>
       <div className="flex justify-center">
         <div className=" grid grid-cols-1 lg:grid-cols-3 gap-20">
-          {
-            services.map(service => <Service
-            key={service._id}
-            service={service}
-            ></Service>)
-          }
+          {services.map((service) => (
+            <Service key={service._id} service={service}></Service>
+          ))}
         </div>
       </div>
     </div>

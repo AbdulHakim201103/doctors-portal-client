@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import About from "./Pages/About/About";
-import Appointment from "./Pages/Appointment/Appointment";
+import Appointment from "./Pages/Appointment/Appointment/Appointment";
 import Reviews from "./Pages/Reviews/Reviews";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import Login from "./Pages/Login/Login/Login";
@@ -12,7 +12,7 @@ import Home from "./Pages/Home/Home/Home";
 
 function App() {
   return (
-    <div>
+    <div className="container mx-auto">
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />

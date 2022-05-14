@@ -8,7 +8,7 @@ const Info = () => {
   return (
     <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
       <InfoCard
-        bgClass="bg-primary"
+        bgClass="bg-gradient-to-r from-secondary to-primary"
         cardBody="10am - 5pm"
         cardTitle="Opening Hours"
         img={clock}
@@ -20,7 +20,7 @@ const Info = () => {
         img={marker}
       ></InfoCard>
       <InfoCard
-        bgClass="bg-primary"
+        bgClass="bg-gradient-to-r from-secondary to-primary"
         cardBody="+8801703454892"
         cardTitle="Contact us now"
         img={phone}

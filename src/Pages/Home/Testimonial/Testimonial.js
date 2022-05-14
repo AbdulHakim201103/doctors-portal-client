@@ -8,7 +8,7 @@ const Testimonial = () => {
   const testimonial = [
     {
       _id: 1,
-      name: "Farshid Ahsan",
+      true: "Farshid Ahsan",
       address: " Nodia",
       description:
         "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
@@ -16,7 +16,7 @@ const Testimonial = () => {
     },
     {
       _id: 2,
-      name: "Sabiha Khair Ohi",
+      true: "Sabiha Khair Ohi",
       address: "Faridpur",
       description:
         "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
@@ -24,7 +24,7 @@ const Testimonial = () => {
     },
     {
       _id: 3,
-      name: "Munni Khatun",
+      true: "Munni Khatun",
       address: "Dhaka",
       description:
         "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
@@ -39,7 +39,7 @@ const Testimonial = () => {
           <h2 className="text-4xl">What Our Patients Says</h2>
         </div>
         <div className="p-10">
-            <img className="w-24 lg:w-48" src={quote} alt="" />
+          <img className="w-24 lg:w-48" src={quote} alt="" />
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">

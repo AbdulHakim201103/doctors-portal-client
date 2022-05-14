@@ -3,7 +3,7 @@ import React from "react";
 const PrimaryButton = ({ children }) => {
   return (
     <div>
-      <button className="btn btn-primary my-5 uppercase font-bold text-white bg-gradient-to-r from-secondary to-primary">
+      <button className="btn btn-primary bg-gradient-to-r from-secondary to-primary">
         {children}
       </button>
     </div>
