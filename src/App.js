@@ -9,6 +9,7 @@ import Register from "./Pages/Login/Register/Register";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 import Home from "./Pages/Home/Home/Home";
+import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -16,13 +17,13 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="home" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="appointment" element={<Appointment />} />
-        <Route path="reviews" element={<Reviews />} />
-        <Route path="contactUs" element={<ContactUs />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/appointment" element={<RequireAuth><Appointment /></RequireAuth>} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

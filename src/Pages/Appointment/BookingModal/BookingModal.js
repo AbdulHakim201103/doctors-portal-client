@@ -1,14 +1,17 @@
 import React from "react";
 import { format } from "date-fns";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
-  const {_id, name, slots } = treatment;
+  const { name, slots } = treatment;
+  const [user] = useAuthState(auth);
 
   const handleBooking = (event) => {
     event.preventDefault();
     const slot = event.target.slot.value;
     console.log(slot);
-    setTreatment(null)
+    setTreatment(null);
   };
 
   return (
@@ -28,14 +31,22 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
               className="input input-bordered w-full "
             />
             <select name="slot" className="select select-bordered w-full">
-              {slots.map((slot) => (
-                <option value={slot}>{slot}</option>
+              {slots.map((slot,index) => (
+                <option key={index}  value={slot}>{slot}</option>
               ))}
             </select>
             <input
               type="text"
               name="name"
-              placeholder="Full true"
+              value={user?.displayName || ''}
+              disabled
+              className="input input-bordered w-full "
+            />
+            <input
+              type="email"
+              name="email"
+              value={user?.email || ''}
+              disabled
               className="input input-bordered w-full "
             />
             <input
@@ -45,12 +56,10 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
               className="input input-bordered w-full "
             />
             <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="input input-bordered w-full "
+              type="submit"
+              value="Submit"
+              className="btn btn-secondary bg-gradient-to-r from-secondary to-primary w-full mx-auto"
             />
-            <input type="submit" value="Submit" className="btn btn-secondary bg-gradient-to-r from-secondary to-primary w-full mx-auto" />
           </form>
         </div>
       </div>
