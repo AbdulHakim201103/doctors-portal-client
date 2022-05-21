@@ -9,7 +9,7 @@ const Info = () => {
     <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
       <InfoCard
         bgClass="bg-gradient-to-r from-secondary to-primary"
-        cardBody="10am - 5pm"
+        cardBody="08.00 AM - 05.00 PM"
         cardTitle="Opening Hours"
         img={clock}
       ></InfoCard>

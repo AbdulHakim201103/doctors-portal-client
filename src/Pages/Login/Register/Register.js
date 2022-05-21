@@ -3,14 +3,15 @@ import {  useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfi
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import {  toast } from "react-toastify";
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
   
   const [updateProfile, updating, profileError] = useUpdateProfile(auth);
 
+  
   const [
     createUserWithEmailAndPassword,
     user,
@@ -18,6 +19,7 @@ const Register = () => {
     error,
   ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
   
+  const [token] = useToken( user ||googleUser );
 
   const {
     register,
@@ -38,14 +40,14 @@ const Register = () => {
     loginLoading = <button className="btn flex mx-auto my-4 bg-white text-red-500 border-0 loading">loading</button>
   }
 
-  if (user ||googleUser) {
+  if (token) {
     navigate('/home')
   }
 
   const onSubmit = async(data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({displayName: data.name})
-    toast("Account create Successfully");
+    toast.success("Account create Successfully");
   };
   return (
     <div className="flex h-screen justify-center items-center">
@@ -144,7 +146,6 @@ const Register = () => {
           </button>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

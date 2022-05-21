@@ -1,17 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { format } from "date-fns";
 import AppointmentServiceCade from "../AppointmentServiceCade/AppointmentServiceCade";
 import BookingModal from "../BookingModal/BookingModal";
+import { useQuery } from "react-query";
 
 const AvailableAppointment = ({ date }) => {
-  const [services, setServices] = useState([]);
   const [treatment, setTreatment] = useState(null);
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/service")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+
+  const formattedDate = format(date, "PP");
+  const {
+    data: services,
+    isLoading,
+    refetch,
+  } = useQuery(["available", formattedDate], () =>
+    fetch(`https://aqueous-scrubland-42523.herokuapp.com/available?date=${formattedDate}`).then(
+      (res) => res.json()
+    )
+  );
+
+  if (isLoading) {
+    return (
+      <button className="btn flex mx-auto my-4 bg-white text-red-500 border-0 loading">
+        loading
+      </button>
+    );
+  }
 
   return (
     <div className="container mx-auto my-20">
@@ -19,7 +32,7 @@ const AvailableAppointment = ({ date }) => {
         Available Appointment on {format(date, "PP")}
       </h1>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
-        {services.map((service) => (
+        {services?.map((service) => (
           <AppointmentServiceCade
             key={service._id}
             service={service}
@@ -28,7 +41,12 @@ const AvailableAppointment = ({ date }) => {
         ))}
       </div>
       {treatment && (
-        <BookingModal date={date} treatment={treatment} setTreatment={setTreatment}></BookingModal>
+        <BookingModal
+          date={date}
+          treatment={treatment}
+          refetch={refetch}
+          setTreatment={setTreatment}
+        ></BookingModal>
       )}
     </div>
   );

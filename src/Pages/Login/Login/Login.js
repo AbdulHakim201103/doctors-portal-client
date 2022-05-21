@@ -7,8 +7,9 @@ import {
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import useToken from "../../../hooks/useToken";
+
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -16,6 +17,8 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
  const [resetEmail,setResetEmail] = useState('')
+
+ const [token] = useToken( user ||googleUser );
 
   const {
     register,
@@ -47,21 +50,21 @@ const Login = () => {
     );
   }
 
-  if (user || googleUser) {
+  if (token) {
     navigate(from, { replace: true });
   }
+  
   const resetPassword = async ()=> {
     const email = resetEmail;
     if (email) {
       await sendPasswordResetEmail(email);
-      toast("Sent email");
+      toast.success("Sent email");
     } else {
-      toast("Please enter your email address");
+      toast.error("Please enter your email address");
     }
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     setResetEmail(data.email)
     signInWithEmailAndPassword(data.email, data.password);
   };
@@ -159,7 +162,6 @@ const Login = () => {
           </button>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
